@@ -18,11 +18,37 @@
     --green: #8be28b;
     --purple: #c792ea;
     --orange: #ffcb6b;
+    --header-bg: rgba(8, 9, 12, 0.85);
+    --header-border: rgba(255, 255, 255, 0.05);
+    --code-bg: #0d0f14;
+    --code-muted: #6b7280;
+    --code-dot: #383c44;
+    --shadow: rgba(0, 0, 0, 0.18);
 
     --max-width: 1180px;
     --radius: 14px;
 
     --transition: 0.3s ease;
+}
+
+body.light-theme {
+    --bg: #f7f4ef;
+    --bg-soft: #ece8e1;
+    --bg-card: #fffdf9;
+    --border: #d8d2c8;
+    --text: #1d2025;
+    --text-muted: #5f6670;
+    --accent: #c93636;
+    --accent-light: #a92b2b;
+    --green: #24734b;
+    --purple: #7545a4;
+    --orange: #a66500;
+    --header-bg: rgba(247, 244, 239, 0.88);
+    --header-border: rgba(29, 32, 37, 0.1);
+    --code-bg: #20242b;
+    --code-muted: #b8bec8;
+    --code-dot: #747c87;
+    --shadow: rgba(47, 38, 26, 0.14);
 }
 
 * {
@@ -66,10 +92,10 @@ a {
     width: 100%;
     z-index: 1000;
 
-    background: rgba(8, 9, 12, 0.85);
+    background: var(--header-bg);
     backdrop-filter: blur(15px);
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--header-border);
 }
 
 .nav {
@@ -105,6 +131,37 @@ a {
 
 .nav-links a:hover {
     color: var(--text);
+}
+
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 8px 11px;
+
+    border: 1px solid var(--border);
+    border-radius: 7px;
+
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.78rem;
+    font-weight: 600;
+
+    transition: var(--transition);
+}
+
+.theme-toggle:hover {
+    border-color: var(--accent);
+    color: var(--text);
+}
+
+.theme-icon {
+    color: var(--accent);
+    font-size: 1rem;
+    line-height: 1;
 }
 
 .menu-toggle {
@@ -248,14 +305,14 @@ a {
 /* Code window */
 
 .code-window {
-    background: #0d0f14;
+    background: var(--code-bg);
 
     border: 1px solid var(--border);
 
     border-radius: var(--radius);
 
     box-shadow:
-        0 30px 80px rgba(0, 0, 0, 0.45);
+        0 30px 80px var(--shadow);
 
     overflow: hidden;
 
@@ -277,7 +334,7 @@ a {
 
     border-bottom: 1px solid var(--border);
 
-    color: #6b7280;
+    color: var(--code-muted);
 
     font-size: 0.75rem;
 }
@@ -293,7 +350,7 @@ a {
 
     border-radius: 50%;
 
-    background: #383c44;
+    background: var(--code-dot);
 }
 
 .code-content {
@@ -595,7 +652,7 @@ a {
     border: 1px solid var(--border);
     border-radius: 5px;
 
-    color: #9ca3af;
+    color: var(--text-muted);
 
     font-size: 0.7rem;
 }
@@ -913,6 +970,12 @@ a {
 
 
 @media (max-width: 700px) {
+
+    .theme-toggle {
+        position: absolute;
+        top: 19px;
+        right: 62px;
+    }
 
     .nav-links {
         position: absolute;

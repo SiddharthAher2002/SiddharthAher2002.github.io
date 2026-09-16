@@ -25,6 +25,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* -----------------------------------------------------
+       Theme preference
+       ----------------------------------------------------- */
+
+    const themeToggle = document.getElementById("themeToggle");
+    const savedTheme = localStorage.getItem("theme");
+
+    const setTheme = theme => {
+        const isLight = theme === "light";
+
+        document.body.classList.toggle("light-theme", isLight);
+
+        if (themeToggle) {
+            themeToggle.setAttribute("aria-pressed", String(isLight));
+            themeToggle.setAttribute(
+                "aria-label",
+                isLight ? "Switch to dark theme" : "Switch to light theme"
+            );
+            themeToggle.querySelector(".theme-icon").textContent = isLight ? "☾" : "☼";
+            themeToggle.querySelector(".theme-label").textContent = isLight ? "Dark" : "Light";
+        }
+    };
+
+    setTheme(savedTheme || "dark");
+
+    if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+            const nextTheme = document.body.classList.contains("light-theme") ? "dark" : "light";
+
+            localStorage.setItem("theme", nextTheme);
+            setTheme(nextTheme);
+        });
+    }
+
+
+    /* -----------------------------------------------------
        Current Year
        ----------------------------------------------------- */
 
