@@ -60,6 +60,56 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* -----------------------------------------------------
+       Academic slider
+       ----------------------------------------------------- */
+
+    if (window.Swiper) {
+        const academicSwiper = new Swiper('.academic-swiper', {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+            spaceBetween: 20,
+            grabCursor: true,
+            loop: true,
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.academic-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.academic-next',
+                prevEl: '.academic-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    slidesPerGroup: 2,
+                },
+                900: {
+                    slidesPerView: 3,
+                    slidesPerGroup: 3,
+                },
+                1280: {
+                    slidesPerView: 4,
+                    slidesPerGroup: 4,
+                }
+            }
+        });
+
+        if (academicSwiper) {
+            academicSwiper.init();
+        }
+    } else {
+        const academicSwiper = document.querySelector('.academic-swiper');
+
+        if (academicSwiper) {
+            academicSwiper.classList.add('swiper-fallback');
+        }
+    }
+
+    /* -----------------------------------------------------
        Current Year
        ----------------------------------------------------- */
 
