@@ -207,9 +207,9 @@ a {
 
 .hero-content {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1.1fr 0.9fr;
 
-    gap: 0;
+    gap: 80px;
     align-items: center;
 }
 
@@ -1175,7 +1175,7 @@ a {
 }
 
 .gallery-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .media-card {
