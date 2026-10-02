@@ -857,6 +857,15 @@ a {
     font-size: 0.8rem;
 }
 
+.recognition-image {
+    display: block;
+    width: min(100%, 480px);
+    height: auto;
+    margin-top: 18px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+}
+
 
 /* =========================================================
    Contact
