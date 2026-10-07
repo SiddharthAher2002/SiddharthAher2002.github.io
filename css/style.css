@@ -60,6 +60,7 @@ body.light-theme {
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
+    overflow-x: clip;
 }
 
 body {
@@ -207,7 +208,7 @@ a {
 
 .hero-content {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
 
     gap: 80px;
     align-items: center;
@@ -533,6 +534,14 @@ a {
     color: var(--text-muted);
 }
 
+.timeline-content,
+.education-card > div,
+.project-card,
+.skill-group,
+.doc-card {
+    min-width: 0;
+}
+
 .timeline-content li {
     margin-bottom: 10px;
 }
@@ -569,7 +578,7 @@ a {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 
     gap: 20px;
 }
@@ -690,7 +699,7 @@ a {
 
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 
     gap: 20px;
 }
@@ -820,7 +829,7 @@ a {
 
 .education-card {
     display: grid;
-    grid-template-columns: 150px 1fr;
+    grid-template-columns: 150px minmax(0, 1fr);
 
     gap: 30px;
 
@@ -902,6 +911,7 @@ a {
 
     font-size: clamp(1.3rem, 3vw, 2rem);
     font-weight: 600;
+    overflow-wrap: anywhere;
 
     border-bottom: 1px solid var(--accent);
 
@@ -914,6 +924,7 @@ a {
 
 .contact-links {
     display: flex;
+    flex-wrap: wrap;
     gap: 25px;
 
     color: var(--text-muted);
@@ -935,6 +946,39 @@ a {
             rgba(255, 77, 77, 0.04),
             transparent 55%
         );
+}
+
+.credentials-preview-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 30px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.credentials-preview-copy {
+    max-width: 650px;
+}
+
+.credentials-preview-copy h2 {
+    margin-bottom: 12px;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    line-height: 1.1;
+}
+
+.credentials-preview-copy h2 span {
+    color: var(--accent);
+}
+
+.credentials-preview-copy > p:not(.eyebrow) {
+    color: var(--text-muted);
+}
+
+.credentials-preview-content .btn {
+    flex-shrink: 0;
+    text-align: center;
 }
 
 .slider-header {
@@ -1439,6 +1483,12 @@ a {
 
     .contact-content h2 {
         letter-spacing: -2px;
+    }
+
+    .credentials-preview-content {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 24px;
     }
 }
 
